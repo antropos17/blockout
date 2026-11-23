@@ -1,0 +1,70 @@
+<header>
+  <div class="wordmark">Блок<span>аут</span></div>
+  <div class="tagline">опишите сцену словами — получите черновик шота для видеомодели</div>
+  <div class="slate">ШОТ <b id="shotno">001</b> · <b id="durlabel">5.0</b> с</div>
+</header>
+
+<main>
+  <aside>
+    <div class="tabs">
+      <button class="tab on" data-go="scene">Сцена</button>
+      <button class="tab" data-go="objects">Объекты</button>
+    </div>
+
+    <div class="pane" data-tab="scene">
+      <h2>Что происходит в кадре</h2>
+      <textarea id="prompt">Человек стоит лицом к камере. Слева от него машина, справа фонарный столб, позади стена. Камера объезжает его по дуге вправо.</textarea>
+      <button class="btn" id="go">Собрать сцену</button>
+      <div class="examples" id="examples"></div>
+      <p class="hint">Пишите как рассказываете другу: кто, где, что делает, куда движется камера. Формы будут грубые — так и надо.</p>
+      <p class="err" id="err" hidden></p>
+    </div>
+
+    <div class="pane readback" id="readback" data-tab="scene" hidden>
+      <h2>Что получилось</h2>
+      <div id="readbody"></div>
+    </div>
+
+    <div class="pane" data-tab="objects">
+      <h2>Объекты</h2>
+      <div id="list"><p class="empty">Появятся после сборки сцены.</p></div>
+    </div>
+
+    <div class="pane" id="insp" data-tab="objects" hidden>
+      <h2 id="inspname">Объект</h2>
+      <div class="fld"><label>Вбок</label><input type="range" id="ox" min="-14" max="14" step="0.1"><output id="oxv">0</output></div>
+      <div class="fld"><label>Вверх</label><input type="range" id="oy" min="0" max="9" step="0.1"><output id="oyv">0</output></div>
+      <div class="fld"><label>Вглубь</label><input type="range" id="oz" min="-16" max="10" step="0.1"><output id="ozv">0</output></div>
+      <div class="two">
+        <button class="btn ghost" id="keyhere">Закрепить тут</button>
+        <button class="btn ghost" id="delobj">Убрать</button>
+      </div>
+      <p class="hint">Ползунки двигают объект целиком. «Закрепить тут» оставляет его в этой точке на текущей секунде.</p>
+    </div>
+  </aside>
+
+  <div class="stage">
+    <div class="viewwrap" id="viewwrap">
+      <canvas id="cv"></canvas>
+      <div class="overlay">
+        <button class="chip act" id="mode">Смотрю камерой шота</button>
+        <button class="chip" id="setcam" style="display:none">Снять камеру отсюда</button>
+      </div>
+      <div class="tip" id="tip">Перетащите объект мышью · тяните пустое место, чтобы обойти сцену · колесо — ближе и дальше</div>
+      <div class="recdot" id="recdot"><i></i> ЗАПИСЬ</div>
+    </div>
+
+    <div class="slateline">
+      <div class="tc"><b id="tc">00:00.00</b> / <span id="tcend">00:05.00</span></div>
+      <div class="perfs" id="perfs"></div>
+      <div id="objcount" style="color:var(--muted)">0 объектов</div>
+    </div>
+
+    <div class="transport">
+      <button class="tbtn" id="play" title="Играть">▶</button>
+      <input type="range" id="scrub" min="0" max="1000" value="0">
+      <button class="btn ghost" style="width:auto;padding:9px 14px;margin:0" id="png">Сохранить кадр</button>
+      <button class="btn ghost" style="width:auto;padding:9px 14px;margin:0" id="webm">Сохранить видео</button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,12 @@
+{
+  "name": "blockout",
+  "version": "0.2.0",
+  "description": "Постановка шота словами: LLM отдаёт отношения, код считает координаты, браузер рисует грубый блокаут для видеомоделей",
+  "private": true,
+  "scripts": {
+    "test": "node test/solver.test.js",
+    "build": "node build.js",
+    "check": "npm test && npm run build"
+  },
+  "license": "MIT"
+}

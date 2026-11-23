@@ -1,0 +1,156 @@
+:root{
+  --ink:#121316; --panel:#1B1D21; --panel2:#212429; --line:#2C2F35;
+  --text:#EDEBE7; --muted:#878B92; --mark:#E4B33C; --rec:#D9483B; --good:#7FB069;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--ink);color:var(--text);font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:14px;display:flex;flex-direction:column;overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+
+header{display:flex;align-items:baseline;gap:14px;padding:10px 16px;
+  border-bottom:1px solid var(--line);background:var(--panel);flex:0 0 auto}
+.wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;
+  letter-spacing:.16em;text-transform:uppercase}
+.wordmark span{color:var(--mark)}
+.tagline{color:var(--muted);font-size:12px}
+.slate{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.slate b{color:var(--text);font-weight:500}
+
+main{flex:1 1 auto;display:flex;min-height:0}
+aside{width:320px;flex:0 0 320px;background:var(--panel);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;min-height:0;overflow:auto}
+.stage{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
+
+.pane{padding:14px 16px;border-bottom:1px solid var(--line)}
+.pane h2{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+textarea{width:100%;height:84px;resize:vertical;background:var(--ink);border:1px solid var(--line);
+  border-radius:2px;padding:9px 10px;line-height:1.45}
+textarea:focus,input:focus{outline:2px solid var(--mark);outline-offset:-1px}
+
+.btn{width:100%;padding:11px;background:var(--mark);color:#171613;border:0;border-radius:2px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;
+  letter-spacing:.12em;text-transform:uppercase;margin-top:10px}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover:not(:disabled){border-color:var(--mark);color:var(--mark)}
+
+.examples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.ex{font-size:12px;padding:6px 9px;background:var(--panel2);border:1px solid var(--line);
+  border-radius:14px;color:var(--muted)}
+.ex:hover{border-color:var(--mark);color:var(--mark)}
+
+.hint{color:var(--muted);font-size:12px;line-height:1.5;margin:9px 0 0}
+.err{color:var(--rec);font-size:12px;line-height:1.5;margin:9px 0 0}
+
+.readback p{margin:0 0 7px;line-height:1.5;font-size:13px}
+.readback .fix{color:var(--good);font-size:12px;display:flex;gap:6px;align-items:flex-start}
+
+.row{display:flex;align-items:center;gap:10px;padding:8px 10px;margin-bottom:4px;
+  background:var(--panel2);border:1px solid transparent;border-radius:2px;cursor:pointer}
+.row:hover{border-color:var(--line)}
+.row.on{border-color:var(--mark)}
+.row .nm{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.08em}
+.empty{color:var(--muted);font-size:12px;line-height:1.55}
+
+.viewwrap{flex:1 1 auto;position:relative;min-height:0;background:#0C0D0F}
+canvas{display:block;width:100%;height:100%}
+.overlay{position:absolute;top:12px;left:14px;display:flex;gap:8px;pointer-events:none}
+.chip{pointer-events:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+  padding:5px 9px;background:rgba(18,19,22,.78);border:1px solid var(--line);border-radius:2px}
+.chip.act{border-color:var(--mark);color:var(--mark)}
+.tip{position:absolute;bottom:12px;left:14px;right:14px;pointer-events:none;text-align:center;
+  font-size:12px;color:#4a4841}
+.recdot{position:absolute;top:12px;right:14px;display:none;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--rec);
+  background:rgba(18,19,22,.78);border:1px solid var(--rec);padding:5px 9px;border-radius:2px}
+.recdot i{width:8px;height:8px;border-radius:50%;background:var(--rec);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+
+.slateline{display:flex;align-items:center;gap:16px;padding:8px 16px;border-top:1px solid var(--line);
+  background:var(--panel);font-family:'IBM Plex Mono',monospace;font-size:12px;flex:0 0 auto}
+.tc{font-size:16px;letter-spacing:.06em}
+.tc b{color:var(--mark);font-weight:500}
+.perfs{flex:1 1 auto;height:22px;display:flex;gap:3px;border-left:1px solid var(--line);
+  border-right:1px solid var(--line);padding:0 8px}
+.perf{flex:1 1 0;background:var(--line);border-radius:1px}
+.perf.on{background:var(--mark)}
+
+.transport{display:flex;align-items:center;gap:12px;padding:10px 16px;border-top:1px solid var(--line);
+  background:var(--panel);flex:0 0 auto;flex-wrap:wrap}
+.transport input[type=range]{flex:1 1 120px;accent-color:var(--mark)}
+.tbtn{width:38px;height:32px;background:var(--panel2);border:1px solid var(--line);border-radius:2px;
+  display:grid;place-items:center}
+.tbtn:hover{border-color:var(--mark)}
+
+.fld{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.fld label{width:74px;flex:0 0 74px;color:var(--muted);font-size:12px;
+  font-family:'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.fld input[type=range]{flex:1 1 auto;accent-color:var(--mark)}
+.fld output{width:52px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.two{display:flex;gap:8px}
+.two .btn{margin-top:0}
+
+/* вкладки — только на узком экране */
+.tabs{display:none;gap:0;background:var(--panel);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:5}
+.tab{flex:1 1 0;padding:13px 8px;background:transparent;border:0;border-bottom:2px solid transparent;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tab.on{color:var(--mark);border-bottom-color:var(--mark)}
+
+@media (max-width:880px), (pointer:coarse){
+  body{overflow:auto}
+  main{flex-direction:column-reverse}          /* картинка сверху, панели снизу */
+  .stage{flex:0 0 auto}
+  .viewwrap{height:44vh;min-height:250px}
+  aside{width:auto;flex:1 1 auto;border-right:0;border-top:1px solid var(--line);
+    max-height:none;overflow:visible;padding-bottom:env(safe-area-inset-bottom)}
+  .tabs{display:flex}
+
+  /* показываем только активную вкладку */
+  body[data-tab="scene"]   [data-tab="objects"]{display:none}
+  body[data-tab="objects"] [data-tab="scene"]{display:none}
+
+  /* всё крупнее и под палец */
+  .pane{padding:16px}
+  textarea{height:104px;font-size:16px;padding:12px}   /* 16px — иначе iOS зумит */
+  .btn{padding:15px;font-size:16px}
+  .ex{padding:10px 14px;font-size:13px;border-radius:20px}
+  .two{flex-direction:column}
+  .chip{padding:9px 12px;font-size:12px}
+  .overlay{top:10px;left:10px;right:10px;flex-wrap:wrap}
+  .tip{display:none}
+
+  .transport{position:sticky;bottom:0;z-index:6;gap:10px;padding:12px 16px;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  .transport .btn{flex:1 1 0;width:auto!important;padding:13px 10px!important;font-size:14px}
+  .transport input[type=range]{flex:1 1 100%;order:-1;height:34px}
+  .tbtn{width:52px;height:46px;font-size:17px}
+
+  .slateline{padding:8px 16px;gap:10px}
+  .perfs{display:none}
+  .tc{font-size:15px}
+
+  .fld label{width:62px;flex:0 0 62px}
+  .fld input[type=range]{height:34px}
+  .row{padding:14px 12px}
+  header .tagline{display:none}
+}
+
+/* толще ползунки на тач-экранах */
+@media (pointer:coarse){
+  input[type=range]{-webkit-appearance:none;appearance:none;background:transparent}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--line);border-radius:2px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;
+    border-radius:50%;background:var(--mark);margin-top:-11px;border:0}
+  input[type=range]::-moz-range-track{height:4px;background:var(--line);border-radius:2px}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--mark);border:0}
+}
+
+canvas{touch-action:none}
+@media (prefers-reduced-motion:reduce){.recdot i{animation:none}}
